@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T&L Market — Order Online | 1335 Middle St, Honolulu HI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --cream:#FBF3E7; --cream-dim:#F2E5CF;
+  --red:#C8372E;   --red-dark:#9E2B23;
+  --navy:#1F2A52;  --navy-dim:#2B3868;
+  --ink:#2B2420;   --gold:#E0A526;
+  --line:rgba(43,36,32,.13);
+  --card:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:90px;overflow-x:hidden;}
+h1,h2,h3,.display{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.01em;}
+button{font-family:inherit;cursor:pointer;border:none;}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+
+/* ===== ISLAND BG ===== */
+.island-bg{
+  position:fixed;inset:0;z-index:-1;
+  background:var(--cream);
+  overflow:hidden;pointer-events:none;
+}
+.island-bg svg{width:100%;height:100%;opacity:.07;}
+
+/* ===== TOP BAR ===== */
+.topbar{background:var(--navy);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;}
+.topbar .dot{color:var(--gold);margin-right:6px;}
+
+/* ===== LOGO / HERO ===== */
+.hero{max-width:980px;margin:0 auto;padding:18px 16px 0;}
+
+.logo-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.logo-emblem svg{width:56px;height:56px;}
+.logo-text-block{line-height:1;}
+.logo-text-block .store-name{font-family:'Archivo Black',sans-serif;font-size:clamp(1.4rem,5vw,2.4rem);color:var(--red);text-shadow:1px 1px 0 rgba(43,36,32,.15);text-transform:uppercase;letter-spacing:.01em;}
+.logo-text-block .store-tag{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin-top:3px;}
+
+.sign-frame{border:5px solid var(--red);background:var(--cream);}
+.sign-r1{padding:16px 18px 8px;text-align:center;}
+.sign-r1 h1{font-size:clamp(2.2rem,8vw,4.4rem);color:var(--red);line-height:.95;text-shadow:2px 2px 0 var(--ink);}
+.sign-r2{background:var(--navy);color:var(--cream);text-align:center;padding:9px;font-family:'Archivo Black',sans-serif;font-size:clamp(1rem,3.5vw,1.7rem);letter-spacing:.08em;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);}
+.sign-r3{background:var(--cream);text-align:center;padding:10px;color:var(--red-dark);font-weight:800;font-size:clamp(.8rem,2.5vw,1.05rem);letter-spacing:.04em;}
+.sign-r3 .sep{color:var(--ink);margin:0 8px;opacity:.35;}
+
+.hero-info{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-top:16px;}
+.hero-desc{max-width:500px;font-size:.96rem;line-height:1.55;color:rgba(43,36,32,.8);}
+.hero-desc strong{color:var(--ink);}
+.hours-card{font-family:'JetBrains Mono',monospace;font-size:.8rem;background:var(--navy);color:var(--cream);padding:12px 16px;border-left:4px solid var(--gold);min-width:230px;}
+.hours-card .ht{text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700;margin-bottom:6px;font-family:'Archivo',sans-serif;font-size:.72rem;}
+.hours-card .hr{display:flex;justify-content:space-between;padding:1px 0;}
+.status-pill{display:inline-block;margin-top:8px;padding:3px 8px;background:var(--gold);color:var(--ink);font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;}
+
+/* ===== LOCATION ===== */
+.location-strip{max-width:980px;margin:20px auto 0;padding:0 16px;}
+.loc-row{display:flex;gap:10px;flex-wrap:wrap;}
+.loc-pill{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);padding:8px 14px;font-size:.82rem;font-weight:600;}
+.loc-pill .icon{font-size:1rem;}
+.loc-pill a{color:var(--navy);text-decoration:underline;text-underline-offset:2px;}
+
+/* ===== STOREFRONT PHOTO ===== */
+.storefront-wrap{max-width:980px;margin:20px auto 0;padding:0 16px;}
+.storefront-photo{width:100%;aspect-ratio:16/7;background:var(--cream-dim);border:1px solid var(--line);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
+.storefront-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-ph{text-align:center;color:rgba(43,36,32,.4);font-family:'JetBrains Mono',monospace;font-size:.75rem;}
+.photo-ph .ph-icon{font-size:2rem;margin-bottom:6px;}
+
+/* ===== SPECIALS ===== */
+.specials-wrap{max-width:980px;margin:24px auto 0;padding:0 16px;}
+.specials-banner{background:var(--navy);border-left:5px solid var(--gold);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.specials-banner h2{color:var(--cream);font-size:1.05rem;}
+.specials-date{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;}
+.specials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
+.special-card{background:var(--card);border:2px solid var(--gold);overflow:hidden;display:flex;flex-direction:column;}
+.special-card .sp-tag{background:var(--gold);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;}
+.sample-note{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:rgba(43,36,32,.45);display:flex;align-items:center;gap:5px;}
+
+/* ===== CATEGORY NAV ===== */
+.catnav-wrap{position:sticky;top:0;z-index:30;background:var(--cream);border-bottom:3px solid var(--ink);border-top:1px solid var(--line);}
+.catnav{max-width:980px;margin:0 auto;display:flex;overflow-x:auto;padding:0 16px;scrollbar-width:none;}
+.catnav::-webkit-scrollbar{display:none;}
+.catnav button{background:none;white-space:nowrap;padding:13px 15px;font-weight:700;text-transform:uppercase;font-size:.78rem;letter-spacing:.03em;color:rgba(43,36,32,.5);border-bottom:4px solid transparent;transition:color .15s,border-color .15s;}
+.catnav button.active{color:var(--red);border-bottom-color:var(--red);}
+.catnav button:hover{color:var(--ink);}
+
+/* ===== MENU ===== */
+main{max-width:980px;margin:0 auto;padding:26px 16px 40px;}
+.cat-section{margin-bottom:36px;scroll-margin-top:60px;}
+.cat-header{margin-bottom:14px;}
+.cat-title{font-size:1.35rem;color:var(--navy);display:flex;align-items:baseline;gap:10px;}
+.cat-count{font-family:'JetBrains Mono',monospace;font-size:.74rem;font-weight:500;color:rgba(43,36,32,.4);text-transform:none;}
+.cat-sub{font-size:.78rem;color:rgba(43,36,32,.55);margin-top:3px;font-style:italic;}
+.cat-rule{height:3px;background:var(--ink);width:44px;margin:6px 0 14px;}
+
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+
+/* ===== ITEM CARD ===== */
+.item-card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;transition:border-color .15s;}
+.item-card:hover{border-color:var(--red);}
+
+.item-thumb{
+  width:100%;
+  aspect-ratio:4/3;
+  background:#fff;
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid var(--line);
+}
+.item-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:contain;   /* show full dish, no cropping */
+  object-position:center;
+  display:block;
+  padding:6px;          /* small breathing room around the food photo */
+}
+/* placeholder shown when img is missing / not yet added */
+.item-thumb .no-img{
+  font-size:.65rem;font-family:'JetBrains Mono',monospace;
+  color:rgba(43,36,32,.3);text-align:center;padding:10px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.item-thumb .no-img span{font-size:1.6rem;}
+.item-num{position:absolute;top:6px;left:6px;background:var(--red);color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.68rem;padding:2px 6px;}
+
+.item-body{padding:11px 13px 13px;display:flex;flex-direction:column;gap:6px;flex:1;}
+.item-name{font-size:.92rem;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.2;}
+.item-desc{font-size:.78rem;color:rgba(43,36,32,.6);line-height:1.4;flex:1;}
+.item-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+.item-price{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--navy);font-size:.92rem;line-height:1.2;}
+.item-price .size-mini{display:block;font-size:.65rem;color:rgba(43,36,32,.45);}
+
+.add-btn{background:var(--ink);color:var(--cream);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:7px 11px;transition:background .15s;}
+.add-btn:hover{background:var(--red);}
+.qty-stepper{display:flex;align-items:center;border:2px solid var(--ink);}
+.qty-stepper button{background:var(--ink);color:var(--cream);width:26px;height:26px;font-weight:700;font-size:.9rem;line-height:1;}
+.qty-stepper button:hover{background:var(--red);}
+.qty-stepper .qv{width:28px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.82rem;}
+
+/* ===== CART BAR ===== */
+.cart-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--red);color:#fff;display:none;align-items:center;justify-content:space-between;padding:13px 18px;box-shadow:0 -4px 14px rgba(0,0,0,.18);}
+.cart-bar.on{display:flex;}
+.cb-left{display:flex;align-items:center;gap:10px;font-weight:700;text-transform:uppercase;font-size:.82rem;}
+.cb-badge{background:#fff;color:var(--red);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.75rem;}
+.cb-right{display:flex;align-items:center;gap:12px;}
+.cb-total{font-family:'JetBrains Mono',monospace;font-weight:700;}
+.cb-open{background:var(--ink);color:#fff;padding:8px 15px;font-weight:700;text-transform:uppercase;font-size:.76rem;letter-spacing:.03em;}
+.cb-open:hover{background:var(--navy);}
+
+/* ===== OVERLAY / PANELS ===== */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(31,42,82,.55);display:none;align-items:flex-end;}
+.overlay.open{display:flex;}
+@media(min-width:720px){.overlay{align-items:center;justify-content:center;}}
+.panel{background:var(--cream);width:100%;max-height:88vh;overflow-y:auto;border-top:5px solid var(--red);}
+@media(min-width:720px){.panel{max-width:460px;max-height:86vh;border-top:none;border-left:5px solid var(--red);}}
+.panel-hdr{position:sticky;top:0;background:var(--navy);color:var(--cream);padding:15px 18px;display:flex;align-items:center;justify-content:space-between;}
+.panel-hdr h2{font-size:1.05rem;}
+.close-btn{background:none;color:var(--cream);font-size:1.4rem;line-height:1;width:30px;height:30px;}
+.close-btn:hover{color:var(--gold);}
+.panel-body{padding:16px;}
+
+/* cart lines */
+.cart-line{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line);}
+.cl-img{width:54px;height:54px;background:var(--cream-dim);flex-shrink:0;overflow:hidden;}
+.cl-img img{width:100%;height:100%;object-fit:cover;}
+.cl-info{flex:1;display:flex;flex-direction:column;gap:5px;}
+.cl-top{display:flex;justify-content:space-between;gap:8px;}
+.cl-name{font-weight:800;font-size:.82rem;text-transform:uppercase;}
+.cl-price{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:700;white-space:nowrap;}
+.cl-bot{display:flex;justify-content:space-between;align-items:center;}
+.rm-btn{background:none;color:var(--red);font-size:.7rem;text-transform:uppercase;font-weight:700;letter-spacing:.03em;}
+.rm-btn:hover{text-decoration:underline;}
+
+.empty-cart{text-align:center;padding:50px 10px;color:rgba(43,36,32,.45);}
+.empty-cart .ei{font-size:2.4rem;margin-bottom:10px;}
+
+.cart-summary{margin-top:14px;padding-top:12px;border-top:2px solid var(--ink);}
+.sum-row{display:flex;justify-content:space-between;font-size:.86rem;padding:3px 0;font-family:'JetBrains Mono',monospace;}
+.sum-row.total{font-size:1.08rem;font-weight:700;color:var(--navy);padding-top:7px;}
+.checkout-btn{width:100%;background:var(--red);color:#fff;padding:13px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-top:14px;font-size:.88rem;}
+.checkout-btn:hover{background:var(--red-dark);}
+
+/* form */
+.field{margin-bottom:12px;}
+.field label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-bottom:4px;color:var(--navy);}
+.field input,.field select,.field textarea{width:100%;border:2px solid var(--ink);background:#fff;padding:9px 11px;font-family:'Archivo',sans-serif;font-size:.88rem;color:var(--ink);}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red);}
+.frow{display:flex;gap:9px;}
+.frow .field{flex:1;}
+.radio-group{display:flex;gap:7px;flex-wrap:wrap;}
+.radio-pill{border:2px solid var(--ink);padding:7px 13px;font-size:.78rem;font-weight:700;text-transform:uppercase;cursor:pointer;background:#fff;}
+.radio-pill.sel{background:var(--ink);color:var(--cream);}
+.sec-label{font-family:'Archivo Black',sans-serif;color:var(--red);font-size:.9rem;text-transform:uppercase;margin:16px 0 9px;display:flex;align-items:center;gap:7px;}
+.sec-label .sn{background:var(--red);color:#fff;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-family:'JetBrains Mono',monospace;}
+.mock-badge{background:var(--gold);color:var(--ink);font-size:.66rem;font-weight:700;text-transform:uppercase;padding:3px 8px;letter-spacing:.03em;display:inline-block;margin-bottom:10px;}
+
+/* confirm */
+.confirm-wrap{text-align:center;padding:28px 10px;}
+.confirm-check{width:62px;height:62px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 14px;}
+.confirm-wrap h2{color:var(--navy);margin-bottom:7px;font-size:1.2rem;}
+.order-num{font-family:'JetBrains Mono',monospace;background:var(--cream-dim);border:2px dashed var(--ink);padding:13px;margin:16px 0;font-size:1.35rem;font-weight:700;color:var(--red);}
+.confirm-detail{font-size:.84rem;color:rgba(43,36,32,.7);line-height:1.6;}
+.new-order-btn{margin-top:18px;background:var(--navy);color:var(--cream);padding:11px 20px;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.04em;}
+.new-order-btn:hover{background:var(--ink);}
+
+footer{text-align:center;padding:28px 16px 50px;font-size:.76rem;color:rgba(43,36,32,.45);}
+
+/* ── CLOSED BANNER ── */
+#closedBanner{
+  max-width:980px; margin:20px auto 0; padding:0 16px;
+  display:flex; align-items:flex-start; gap:16px;
+  background:#1F2A52; color:#fff;
+  border-left:6px solid #888;
+  padding:20px 22px;
+}
+.closed-icon{font-size:2rem;flex-shrink:0;margin-top:2px;}
+.closed-text{display:flex;flex-direction:column;gap:5px;}
+.closed-text strong{font-size:1.05rem;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.03em;}
+.closed-text span{font-size:.84rem;color:rgba(255,255,255,.75);line-height:1.5;}
+</style>
+</head>
+<body>
+
+<!-- Island background art -->
+<div class="island-bg">
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <!-- Ocean waves bottom -->
+  <path d="M0 700 Q175 670 350 700 Q525 730 700 700 Q875 670 1050 700 Q1225 730 1400 700 L1400 900 L0 900Z" fill="var(--navy)"/>
+  <path d="M0 740 Q175 710 350 740 Q525 770 700 740 Q875 710 1050 740 Q1225 770 1400 740 L1400 900 L0 900Z" fill="var(--navy)" opacity=".5"/>
+  <path d="M0 770 Q175 745 350 770 Q525 795 700 770 Q875 745 1050 770 Q1225 795 1400 770 L1400 900 L0 900Z" fill="var(--navy)" opacity=".3"/>
+
+  <!-- Sun / moon circle top right -->
+  <circle cx="1180" cy="130" r="80" fill="var(--gold)" opacity=".5"/>
+  <circle cx="1180" cy="130" r="60" fill="var(--gold)" opacity=".4"/>
+
+  <!-- Left coconut palm -->
+  <g transform="translate(80,560)">
+    <line x1="0" y1="0" x2="-30" y2="-260" stroke="var(--ink)" stroke-width="9" stroke-linecap="round"/>
+    <!-- fronds -->
+    <path d="M-30,-260 Q-110,-220 -160,-200" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M-30,-260 Q-90,-240 -130,-250" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M-30,-260 Q-60,-290 -80,-320" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M-30,-260 Q-10,-300 10,-330" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M-30,-260 Q30,-270 70,-280" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M-30,-260 Q50,-240 90,-220" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- coconuts -->
+    <circle cx="-38" cy="-255" r="9" fill="var(--ink)"/>
+    <circle cx="-22" cy="-262" r="8" fill="var(--ink)"/>
+  </g>
+
+  <!-- Right coconut palm -->
+  <g transform="translate(1330,540)">
+    <line x1="0" y1="0" x2="20" y2="-240" stroke="var(--ink)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M20,-240 Q100,-200 150,-180" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M20,-240 Q80,-220 120,-230" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M20,-240 Q50,-270 70,-300" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M20,-240 Q0,-280 -10,-310" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M20,-240 Q-30,-250 -70,-260" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M20,-240 Q-40,-220 -80,-200" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="25" cy="-236" r="9" fill="var(--ink)"/>
+    <circle cx="11" cy="-243" r="8" fill="var(--ink)"/>
+  </g>
+
+  <!-- Small center island / hill -->
+  <ellipse cx="700" cy="710" rx="220" ry="40" fill="var(--cream-dim)" opacity=".5"/>
+  <path d="M560 710 Q620 630 700 610 Q780 630 840 710Z" fill="var(--cream-dim)" opacity=".4"/>
+
+  <!-- Hibiscus left -->
+  <g transform="translate(240,200)" opacity=".5">
+    <circle cx="0" cy="0" r="22" fill="var(--red)" opacity=".4"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="6" fill="var(--gold)" opacity=".6"/>
+  </g>
+
+  <!-- Hibiscus right -->
+  <g transform="translate(1100,350)" opacity=".45">
+    <circle cx="0" cy="0" r="22" fill="var(--red)" opacity=".4"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-30" rx="12" ry="20" fill="var(--red)" opacity=".35" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="6" fill="var(--gold)" opacity=".6"/>
+  </g>
+
+  <!-- Plumeria center -->
+  <g transform="translate(700,200)" opacity=".35">
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="var(--gold)" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="var(--gold)" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="var(--gold)" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="var(--gold)" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-28" rx="10" ry="18" fill="var(--gold)" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="8" fill="var(--cream)" opacity=".7"/>
+  </g>
+
+  <!-- Taro leaf shapes scattered -->
+  <path d="M350 400 Q370 340 420 360 Q400 420 350 400Z" fill="var(--navy)" opacity=".15"/>
+  <path d="M950 450 Q970 390 1020 410 Q1000 470 950 450Z" fill="var(--navy)" opacity=".12"/>
+</svg>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div><span class="dot">●</span>TAKEOUT ONLY — NO DINING ROOM</div>
+  <div id="topbarStatus">CHECKING HOURS…</div>
+</div>
+
+<!-- LOGO + SIGNBOARD -->
+<div class="hero">
+
+  <div class="logo-row">
+    <!-- Hawaiian emblem: coconut palm + hibiscus + lau lau bundle -->
+    <div class="logo-emblem">
+      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- plate base -->
+        <ellipse cx="28" cy="44" rx="20" ry="5" fill="#C8372E" opacity=".18"/>
+        <!-- plate -->
+        <ellipse cx="28" cy="40" rx="19" ry="5" fill="#FBF3E7" stroke="#C8372E" stroke-width="1.5"/>
+        <ellipse cx="28" cy="38" rx="14" ry="3.5" fill="#F2E5CF" stroke="#C8372E" stroke-width="1"/>
+        <!-- laulau bundle on plate (ti-leaf bundle) -->
+        <path d="M22 38 Q24 30 28 27 Q32 30 34 38" fill="#1F2A52" opacity=".7"/>
+        <path d="M25 38 Q26 31 28 29 Q30 31 31 38" fill="#2B3868" opacity=".6"/>
+        <!-- tie string -->
+        <line x1="24" y1="36" x2="32" y2="36" stroke="#E0A526" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- palm trunk -->
+        <path d="M10 50 Q13 38 16 22" stroke="#2B2420" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- palm fronds -->
+        <path d="M16,22 Q6,18 2,10" stroke="#1F2A52" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M16,22 Q10,16 8,6"  stroke="#1F2A52" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M16,22 Q18,14 20,5" stroke="#1F2A52" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M16,22 Q22,16 26,8" stroke="#1F2A52" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M16,22 Q22,20 28,20" stroke="#1F2A52" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- coconuts -->
+        <circle cx="15" cy="23" r="2.5" fill="#2B2420"/>
+        <circle cx="18" cy="21" r="2"   fill="#2B2420"/>
+        <!-- hibiscus -->
+        <g transform="translate(42,14)">
+          <ellipse cx="0" cy="-7" rx="4" ry="6" fill="#C8372E" opacity=".85" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="4" ry="6" fill="#C8372E" opacity=".85" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-7" rx="4" ry="6" fill="#C8372E" opacity=".85" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-7" rx="4" ry="6" fill="#C8372E" opacity=".85" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-7" rx="4" ry="6" fill="#C8372E" opacity=".85" transform="rotate(288)"/>
+          <circle cx="0" cy="0" r="3" fill="#E0A526"/>
+        </g>
+      </svg>
+    </div>
+    <div class="logo-text-block">
+      <div class="store-name">T&amp;L Market</div>
+      <span class="store-tag">Local Food · Deli · Catering · Groceries</span>
+    </div>
+  </div>
+
+  <div class="sign-frame">
+    <div class="sign-r1"><h1>T&amp;L Market</h1></div>
+    <div class="sign-r2">Local Food</div>
+    <div class="sign-r3">DELI <span class="sep">✶</span> CATERING <span class="sep">✶</span> GROCERIES</div>
+  </div>
+
+  <div class="hero-info">
+    <div class="hero-desc">
+      Thai, Lao &amp; Hawaiian plate lunch made fresh to order.<br>
+      <strong>Takeout window only</strong> — no dining room. Order online, pick up at the counter.
+    </div>
+    <div class="hours-card">
+      <div class="ht">Pickup Hours</div>
+      <div class="hr"><span>Mon – Fri</span><span>7:00a – 7:00p</span></div>
+      <div class="hr"><span>Saturday</span><span>8:00a – 5:00p</span></div>
+      <div class="hr"><span>Sunday</span><span>Closed</span></div>
+      <div class="status-pill" id="statusPill">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div class="location-strip">
+  <div class="loc-row">
+    <div class="loc-pill"><span class="icon">📍</span><span>1335 Middle St, Honolulu, HI 96819</span></div>
+    <div class="loc-pill"><span class="icon">📞</span><a href="tel:+18084621969">(808) 462-1969</a></div>
+    <div class="loc-pill"><span class="icon">🚗</span><span>10-min pickup parking out front</span></div>
+  </div>
+</div>
+
+<!-- STOREFRONT PHOTO -->
+<div class="storefront-wrap">
+  <div class="storefront-photo" id="storefrontPhoto">
+    <!-- Replace the div below with: <img src="your-photo.jpg" alt="T&L Market storefront"> -->
+      <img src="images/storefront.jpg" alt="T&L Market storefront">
+  </div>
+</div>
+
+<!-- TODAY'S SPECIALS -->
+<div class="specials-wrap">
+  <div class="specials-banner">
+    <h2>Today's Specials</h2>
+    <span class="specials-date" id="specialsDate"></span>
+  </div>
+  <div class="specials-grid" id="specialsGrid"></div>
+  <div class="sample-note">● Sample specials shown — owner updates the SPECIALS list in the code to change daily.</div>
+</div>
+
+<!-- CLOSED BANNER — shown automatically outside business hours -->
+<div id="closedBanner" style="display:none">
+  <div class="closed-icon">🌙</div>
+  <div class="closed-text">
+    <strong>We're closed right now</strong>
+    <span>Online ordering is available Mon–Fri 7:00a–7:00p and Sat 8:00a–5:00p. We'll be ready to take your order when we open!</span>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="catnav-wrap"><nav class="catnav" id="catNav"></nav></div>
+
+<!-- MENU -->
+<main id="menuMain"></main>
+
+<footer>T&amp;L Market · 1335 Middle St, Honolulu HI · (808) 462-1969 · Demo site — no real orders or payments processed.</footer>
+
+<!-- CART BAR -->
+<div class="cart-bar" id="cartBar">
+  <div class="cb-left"><span class="cb-badge" id="cartBadge">0</span><span>Your order</span></div>
+  <div class="cb-right">
+    <span class="cb-total" id="cartBarTotal">$0.00</span>
+    <button class="cb-open" id="openCartBtn">View order</button>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="overlay" id="cartOverlay">
+  <div class="panel">
+    <div class="panel-hdr"><h2>Your Order</h2><button class="close-btn" id="closeCartBtn">&times;</button></div>
+    <div class="panel-body" id="cartBody"></div>
+  </div>
+</div>
+
+<!-- CHECKOUT PANEL -->
+<div class="overlay" id="checkoutOverlay">
+  <div class="panel">
+    <div class="panel-hdr"><h2 id="checkoutTitle">Checkout</h2><button class="close-btn" id="closeCheckoutBtn">&times;</button></div>
+    <div class="panel-body" id="checkoutBody"></div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   MENU DATA — all items deduplicated, numbered to match boards
+   img: "" → replace with your own image path per item
+   priceReg: set for items with Mini/Regular sizing
+   ========================================================== */
+const MENU = [
+
+  /* ── ALL-DAY BREAKFAST ──────────────────────────────────── */
+  { cat:"All-Day Breakfast", items:[
+    {num:"B1", name:"Breakfast Special",    desc:"Choice of 2 meats, rice, 2 eggs any style. Meats: Portuguese sausage, Spam, bacon, Vienna sausage.", price:11.00, img:"images/1breakfastspecial.png"},
+    {num:"B2", name:"Breakfast Combo",      desc:"Choice of 3 meats, rice, 2 eggs any style.", price:12.00, img:"images/2breakfastcombo.png"},
+    {num:"B3", name:"Breakfast Bowl",       desc:"Rice, 1 egg, one choice of meat.", price:7.00,  img:"images/3breakfastbowl.png"},
+    {num:"B4", name:"T&L Bigboy Breakfast", desc:"Fried omelet, fried rice, Portuguese sausage.", price:13.50, img:"images/4tlbigboy.png"},
+  ]},
+
+  /* ── SALADS & SOUP ──────────────────────────────────────── */
+  { cat:"Salads & Soup", items:[
+    {num:"S1", name:"Summer BBQ Beef",      desc:"Grilled beef with fresh herbs.", price:null, img:"images/1-2summerbbqbeef.png"},
+    {num:"S2", name:"Papaya Salad",         desc:"Shredded green papaya, tomato, lime, peanuts, chili.", price:null, img:"images/3papayasalad.png"},
+    {num:"S3", name:"Cucumber Salad",       desc:"Crisp cucumber, carrot, lime-chili dressing.", price:null, img:"images/4cucumbersalad.png"},
+    {num:"S4", name:"Beef Salad",           desc:"Grilled beef, herbs, lime juice, roasted rice powder.", price:null, img:"images/5beefsalad.png"},
+    {num:"S5", name:"Shrimp Salad",         desc:"Poached shrimp, lemongrass, mint, chili-lime dressing.", price:null, img:"images/6shrimpsalad.png"},
+    {num:"S6", name:"Chicken or Pork Larb", desc:"Minced meat, toasted rice powder, herbs, lime.", price:null, img:"images/8.png"},
+    {num:"S7", name:"Tom Yum",              desc:"Hot & sour soup, lemongrass, mushroom, choice of protein.", price:null, img:"images/19tumyum.png"},
+    {num:"S8", name:"Pho",                  desc:"Vietnamese beef noodle soup, herbs, bean sprout.", price:null, img:"images/20pho.png"},
+    {num:"S9", name:"Udon Chicken Soup",    desc:"Udon noodle in chicken broth with vegetables.", price:null, img:"images/21udonchickensoup.png"},
+  ]},
+
+  /* ── NOODLES & FRIED RICE ───────────────────────────────── */
+  { cat:"Noodles & Fried Rice", items:[
+    {num:"N1", name:"Pad Thai",             desc:"Stir-fried rice noodle, egg, bean sprout, peanuts, tamarind.", price:null, img:"images/9padthai.png"},
+    {num:"N2", name:"Pad See Eiw",          desc:"Wide rice noodle, egg, broccoli, dark soy.", price:null, img:"images/10padseeeiw.png"},
+    {num:"N3", name:"Pad Kee Mao",          desc:"Drunken noodle, basil, chili, mixed vegetables.", price:null, img:"images/11padkeemao.png"},
+    {num:"N4", name:"Lad Nar",              desc:"Flat noodle in savory gravy with Chinese broccoli.", price:null, img:"images/12ladnar.png"},
+    {num:"N5", name:"Stir Fried Long Rice", desc:"Glass noodle stir-fried with egg & vegetables.", price:null, img:"images/13stirfriedlongrice.png"},
+    {num:"N6", name:"Pad Gra Pao",          desc:"Spicy basil stir-fry over rice, fried egg on top.", price:null, img:"images/11padkeemao.png"},
+    {num:"N7", name:"Pineapple Fried Rice", desc:"Fried rice with pineapple, shrimp, cashew, curry powder.", price:null, img:"images/16pineapplefriedrice.png"},
+    {num:"N8", name:"Crab Fried Rice",      desc:"Fried rice with crab meat & scallion.", price:null, img:"images/17crabfriedrice.png"},
+    {num:"N9", name:"Basil Fried Rice",     desc:"Fried rice with holy basil & chili.", price:null, img:"images/18basicfriedrice.png"},
+  ]},
+
+  /* ── STIR FRY & CURRY ───────────────────────────────────── */
+  { cat:"Stir Fry & Curry", items:[
+    {num:"C1",  name:"Mixed Veggie",        desc:"Seasonal vegetables stir-fried in garlic sauce.", price:null, img:"images/22mixedveggie.png"},
+    {num:"C2",  name:"Eggplants",           desc:"Thai eggplant, basil, chili-garlic sauce.", price:null, img:"images/23eggplants.png"},
+    {num:"C3",  name:"Cashew Chicken Nut",  desc:"Chicken, cashew, bell pepper, onion in savory sauce.", price:null, img:"images/24cashewchickennut.png"},
+    {num:"C4",  name:"Thai Sausage",        desc:"House-made sour sausage with herbs & chili.", price:null, img:"images/25thaisausage.png"},
+    {num:"C5",  name:"Spicy Wing",          desc:"Fried chicken wings tossed in Lao chili sauce.", price:null, img:"images/26spicywing.png"},
+    {num:"C6",  name:"Panang Curry",        desc:"Rich coconut curry, kaffir lime, choice of protein.", price:null, img:"images/27panangcurry.png"},
+    {num:"C7",  name:"Yellow Curry",        desc:"Coconut curry, potato, carrot, choice of protein.", price:null, img:"images/29yellowcurry.png"},
+    {num:"C8",  name:"Red Curry",           desc:"Coconut curry, bamboo, bell pepper, basil.", price:null, img:"images/30redcurry.png"},
+    {num:"C9",  name:"Green Curry",         desc:"Coconut curry, Thai eggplant, basil, choice of protein.", price:null, img:"images/31greencurry.png"},
+    {num:"C10", name:"Sweet and Sour",      desc:"Pineapple, bell pepper, onion in sweet-tangy sauce.", price:null, img:"images/32sweetandsour.png"},
+  ]},
+
+  /* ── BURGERS & FRIES ────────────────────────────────────── */
+  { cat:"Burgers & Fries", items:[
+    {num:"BG0", name:"French Fries",          desc:"Crispy golden fries.", price:3.00, img:"images/45.png"},
+    {num:"BG1", name:"Teri Burger",           desc:"Burger glazed in house teriyaki sauce.", price:5.00, img:"images/terriburger.png"},
+    {num:"BG2", name:"Cheese Burger",         desc:"Classic burger with cheese, lettuce, tomato.", price:7.00, img:"images/terriburger.png"},
+    {num:"BG3", name:"Teri Burger w/ Cheese", desc:"Teriyaki burger with melted cheese.", price:8.00, img:"images/48_teri_burg_cheese.png"},
+    {num:"BG4", name:"Fish Burger",           desc:"Fried fish fillet burger with tartar sauce.", price:null, img:"images/50_fish_burger.png"},
+    {num:"BG5", name:"Spicy Chicken Burger",  desc:"Crispy chicken burger with spicy mayo.", price:6.00, img:"images/51_spicy_chicken_burger.png"},
+    {num:"BG6", name:"BBQ Beef Burger",       desc:"Burger topped with house BBQ sauce.", price:null, img:"images/52_bbq_beef_burger.png"},
+  ]},
+
+  /* ── DAILY ITEMS ────────────────────────────────────────── */
+  { cat:"Daily Items", items:[
+    {num:"D1",  name:"Noodle (Small)",         desc:"Local-style noodle soup, small.", price:3.00, img:"images/noodle_sm.png"},
+    {num:"D2",  name:"Noodle (Medium)",        desc:"Local-style noodle soup, medium.", price:6.00, img:"images/noodle_md.png"},
+    {num:"D3",  name:"Noodle (Large)",         desc:"Local-style noodle soup, large.", price:8.00, img:"images/noodle_lg.png"},
+    {num:"D4",  name:"Fried Rice",             desc:"House fried rice.", price:8.00, img:"images/fried_rice.png"},
+    {num:"D5",  name:"Lumpia",                 desc:"Filipino-style fried spring roll, per piece.", price:0.95, img:"images/lumpia.png"},
+    {num:"D6",  name:"Pork Hash",              desc:"Steamed pork dumpling, per piece.", price:0.75, img:"images/pork_hash.png"},
+    {num:"D7",  name:"Manapua (Char Siu Pork)",desc:"Steamed bun filled with Chinese BBQ pork.", price:3.00, img:"images/manapua.png"},
+    {num:"D8",  name:"Won Ton",                desc:"Fried wonton, per piece.", price:0.75, img:"images/wonton.png"},
+    {num:"D9",  name:"Fried Pork Hash",        desc:"Crispy fried pork hash, per piece.", price:0.75, img:"images/fried_pork_hash.png"},
+    {num:"D10", name:"Burrito",                desc:"House-made burrito.", price:3.00, img:"images/burrito.png"},
+    {num:"D11", name:"Fried Chicken (Daily)",  desc:"Crispy fried chicken, single piece.", price:3.00, img:"images/fried_chicken_daily.png"},
+    {num:"D12", name:"Bento",                  desc:"Japanese-style bento box.", price:8.00, img:"images/bento.png"},
+    {num:"D13", name:"Spam Musubi",            desc:"Grilled Spam over rice, wrapped in nori.", price:2.50, img:"images/musubi.png"},
+    {num:"D14", name:"Rice (Side Order)",      desc:"Scoop of steamed rice.", price:2.00, img:"images/rice_side.png"},
+    {num:"D15", name:"Mac Salad (Side Order)", desc:"Scoop of macaroni salad.", price:2.00, img:"images/mac_salad_side.png"},
+  ]},
+
+  /* ── PLATE LUNCH ────────────────────────────────────────────
+     Each Reg/Large is a SEPARATE orderable card.
+     Image filenames match your existing /images/ folder.
+  ─────────────────────────────────────────────────────────── */
+  { cat:"Plate Lunch", subtitle:"Comes with rice. Each size is a separate item.", items:[
+    /* #1 Fried Chicken */
+    {num:"1R", name:"#1 Fried Chicken (Reg)",    desc:"Crispy fried chicken, rice, mac salad.", price:8.00,  img:"images/53 fried_chicken_w_rice_lunch.png"},
+    {num:"1L", name:"#1 Fried Chicken (Lg)",     desc:"Crispy fried chicken, rice, mac salad — large.", price:11.00, img:"images/53 fried_chicken_w_rice_lunch.png"},
+    /* #2 Shoyu Chicken */
+    {num:"2R", name:"#2 Shoyu Chicken (Reg)",    desc:"Soy-glazed braised chicken, rice, mac salad.", price:9.00,  img:"images/54_shoyu_chicken_rice.png"},
+    {num:"2L", name:"#2 Shoyu Chicken (Lg)",     desc:"Soy-glazed braised chicken, rice, mac salad — large.", price:12.00, img:"images/54_shoyu_chicken_rice.png"},
+    /* #3 Chicken Katsu */
+    {num:"3R", name:"#3 Chicken Katsu (Reg)",    desc:"Panko-fried chicken cutlet, katsu sauce, rice.", price:9.00,  img:"images/55chickenkatsurice.png"},
+    {num:"3L", name:"#3 Chicken Katsu (Lg)",     desc:"Panko-fried chicken cutlet, katsu sauce, rice — large.", price:13.00, img:"images/55chickenkatsurice.png"},
+    /* #4 Garlic Chicken */
+    {num:"4R", name:"#4 Garlic Chicken (Reg)",   desc:"Pan-fried chicken in garlic sauce, rice.", price:9.00,  img:"images/56garlicchickenwrice.png"},
+    {num:"4L", name:"#4 Garlic Chicken (Lg)",    desc:"Pan-fried chicken in garlic sauce, rice — large.", price:13.00, img:"images/56garlicchickenwrice.png"},
+    /* #5 Chicken Cutlet */
+    {num:"5R", name:"#5 Chicken Cutlet (Reg)",   desc:"Breaded fried chicken cutlet, rice, mac salad.", price:9.00,  img:"images/78chickencutletrice.png"},
+    {num:"5L", name:"#5 Chicken Cutlet (Lg)",    desc:"Breaded fried chicken cutlet, rice, mac salad — large.", price:13.00, img:"images/78chickencutletrice.png"},
+    /* #6 Kalbi */
+    {num:"6",  name:"#6 Kalbi w/ Rice",          desc:"Korean-style short rib, rice, mac salad.", price:16.00, img:"images/62kalbiwrice.png"},
+    /* #7 New York Steak */
+    {num:"7",  name:"#7 New York Steak w/ Rice", desc:"Grilled NY strip, rice, mac salad.", price:16.00, img:"images/63newyorksteakrice.png"},
+    /* #8 Teri Beef */
+    {num:"8R", name:"#8 Teri Beef (Reg)",        desc:"Grilled teriyaki beef, rice, mac salad.", price:9.00,  img:"images/57teribeefwrice lunch.png"},
+    {num:"8L", name:"#8 Teri Beef (Lg)",         desc:"Grilled teriyaki beef, rice, mac salad — large.", price:12.00, img:"images/57teribeefwrice lunch.png"},
+    /* #9 Chop Steak */
+    {num:"9",  name:"#9 Chop Steak w/ Rice",     desc:"Sliced beef steak in brown gravy, rice.", price:16.00, img:"images/64chopsteakrice.png"},
+    /* #10 Beef Stew */
+    {num:"10R",name:"#10 Beef Stew (Reg)",       desc:"Slow-cooked beef stew, rice, mac salad.", price:9.00,  img:"images/58beefstewwrice.png"},
+    {num:"10L",name:"#10 Beef Stew (Lg)",        desc:"Slow-cooked beef stew, rice, mac salad — large.", price:12.00, img:"images/58beefstewwrice.png"},
+    /* #11 Garlic Shrimp */
+    {num:"11", name:"#11 Garlic Shrimp w/ Rice", desc:"Shell-on shrimp sauteed in garlic butter, rice.", price:16.00, img:"images/65garlicshrimp.png"},
+    /* #12 Fried Fish */
+    {num:"12R",name:"#12 Fried Fish (Reg)",      desc:"Crispy fried fish fillet, rice or fries.", price:9.00,  img:"images/59friedfishwrice.png"},
+    {num:"12L",name:"#12 Fried Fish (Lg)",       desc:"Crispy fried fish fillet, rice or fries — large.", price:14.00, img:"images/59friedfishwrice.png"},
+    /* #13 T&L Noodle */
+    {num:"13", name:"#13 T&L Noodle Special",    desc:"House specialty stir-fried noodle, mixed protein.", price:9.00,  img:"images/66tlnoodlespecial.png"},
+    /* #14 Char Siu Fried Rice */
+    {num:"14", name:"#14 Char Siu Fried Rice",   desc:"Fried rice with Chinese BBQ pork.", price:9.50, img:"images/67charsiufriedrice.png"},
+    /* #15 Loco Moco */
+    {num:"15R",name:"#15 Loco Moco (Reg)",       desc:"Beef patty, fried egg, brown gravy over rice.", price:10.00, img:"images/60locomoco.png"},
+    {num:"15L",name:"#15 Loco Moco (Lg/Hamburger Steak)", desc:"Beef patty, fried egg, brown gravy — large or hamburger steak.", price:13.00, img:"images/60locomoco.png"},
+    /* remaining items */
+    {num:"16", name:"Kalua Pork & Pork Laulau",  desc:"Smoky kalua pork with traditional pork laulau.", price:null, img:"images/69kaluapork.png"},
+    {num:"17", name:"Fried Pork Chops",          desc:"Crispy fried pork chops, rice, mac salad.", price:null, img:"images/71friedporkchops.png"},
+    {num:"18", name:"Grill Pork Chops w/ Gravy", desc:"Grilled pork chops smothered in gravy, rice.", price:null, img:"images/72grillporkchops.png"},
+    {num:"19", name:"Steak and Mushroom",        desc:"Grilled steak, sauteed mushroom, rice.", price:null, img:"images/73steakmushroom.png"},
+    {num:"20", name:"Beef Curry",                desc:"Japanese-style curry with beef, rice.", price:null, img:"images/74beefcurry.png"},
+    {num:"21", name:"T&L Saimin",               desc:"Local-style noodle soup, char siu, egg, green onion.", price:9.50, img:"images/75tlsaimin.png"},
+    {num:"22", name:"Garlic Wing",              desc:"Fried wings tossed in garlic sauce.", price:null, img:"images/76garlicwing.png"},
+    {num:"23", name:"Boneless Chicken w/ Rice", desc:"Crispy boneless chicken bites, rice, mac salad.", price:null, img:"images/77bonelesschicken.png"},
+  ]},
+
+  /* ── DRINKS ─────────────────────────────────────────────── */
+  { cat:"Drinks", items:[
+    {num:"DR1", name:"Green Bug",   desc:"House green juice. Add pearl bubble +$1.25.", price:6.00, img:"images/drink_greenbug.png"},
+    {num:"DR2", name:"Pink Lady",   desc:"House pink juice. Add pearl bubble +$1.25.", price:6.00, img:"images/drink_pinklady.png"},
+    {num:"DR3", name:"Thai Tea",    desc:"Classic sweet Thai iced tea. Add pearl +$1.25.", price:5.00, img:"images/drink_thaitea.png"},
+    {num:"DR4", name:"Thai Coffee", desc:"Iced Thai coffee, sweet & strong. Add pearl +$1.25.", price:6.00, img:"images/drink_thaicoffee.png"},
+    {num:"DR5", name:"Milk Tea",    desc:"Classic milk tea. Add pearl +$1.25.", price:7.00, img:"images/drink_milktea.png"},
+  ]},
+
+  /* ── DESSERTS ───────────────────────────────────────────── */
+  { cat:"Desserts", items:[
+    {num:"DS1", name:"Mango Sticky Rice",        desc:"Sweet sticky rice with fresh mango & coconut cream.", price:8.75, img:"images/mango_sticky_rice.png"},
+    {num:"DS2", name:"Coconut Rice with Peanut", desc:"Sweet coconut rice topped with crushed peanut.", price:6.00,  img:"images/coconut_rice_peanut.png"},
+    {num:"DS3", name:"Taro Coconut Tapioca",     desc:"Warm taro & coconut tapioca pudding.", price:4.00,  img:"images/taro_tapioca.png"},
+  ]},
+];
+
+/* ── DAILY SPECIALS ─────────────────────────────────────────
+   Owner: edit name, desc, price, img each day.
+   img: "" → placeholder shown; set to a file path to display photo.
+   ─────────────────────────────────────────────────────────── */
+const SPECIALS = [
+  {name:"Garlic Shrimp Plate", desc:"Today's lunch special — limited portions.",  price:16.00, img:"images/65garlicshrimp.png"},
+  {name:"Loco Moco Combo",     desc:"Loco moco + drink of the day.",              price:10.00, img:"images/60locomoco.png"},
+  {name:"Kalbi Plate",         desc:"Korean short rib plate, rice & mac salad.", price:16.00, img:"images/62kalbiwrice.png"},
+];
+
+const TAX = 0.04712;   /* Hawaii GET 4.712% */
+let cart = {};
+
+/* ── KEY HELPERS ─────────────────────────────────────────── */
+function ikey(item){ return "i-" + item.num + "-" + item.name; }
+function skey(item){ return "s-" + item.name; }
+
+function findByKey(key){
+  if(key.startsWith("s-")){
+    const name = key.slice(2);
+    return SPECIALS.find(s => s.name === name);
+  }
+  for(const cat of MENU)
+    for(const it of cat.items)
+      if(ikey(it) === key) return it;
+}
+
+/* ── STATUS ───────────────────────────────────────────────── */
+/* ── STORE OPEN/CLOSED ────────────────────────────────────────
+   Single source of truth — used everywhere in the ordering flow.
+   Mon–Fri 7:00a–7:00p, Sat 8:00a–5:00p, Sun closed.
+   ─────────────────────────────────────────────────────────── */
+function storeOpen(){
+  const now = new Date(), d = now.getDay(), h = now.getHours() + now.getMinutes()/60;
+  return (d >= 1 && d <= 5 && h >= 7 && h < 19) ||
+         (d === 6 && h >= 8 && h < 17);
+}
+
+function renderStatus(){
+  const open = storeOpen();
+  document.getElementById("statusPill").textContent        = open ? "Open Now" : "Closed Now";
+  document.getElementById("statusPill").style.background   = open ? "var(--gold)" : "#888";
+  document.getElementById("topbarStatus").textContent      = open ? "OPEN NOW — ORDER FOR PICKUP" : "CLOSED — ONLINE ORDERING UNAVAILABLE";
+  document.getElementById("topbarStatus").style.color      = open ? "" : "#ffaaaa";
+
+  /* Show/hide the closed-order banner above the menu */
+  const banner = document.getElementById("closedBanner");
+  if(banner) banner.style.display = open ? "none" : "flex";
+
+  /* Cart bar: hide entirely when closed */
+  document.getElementById("cartBar").style.display = open ? "" : "none";
+
+  /* Disable / re-enable all Add buttons */
+  document.querySelectorAll(".add-btn").forEach(btn => {
+    if(btn.hasAttribute("data-key")){
+      btn.disabled = !open;
+      btn.style.opacity = open ? "" : "0.35";
+      btn.style.cursor  = open ? "" : "not-allowed";
+      btn.textContent   = open ? "Add +" : "Closed";
+    }
+  });
+}
+
+/* ── SPECIALS DATE ────────────────────────────────────────── */
+function renderSpecialsDate(){
+  document.getElementById("specialsDate").textContent =
+    new Date().toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});
+}
+
+/* ── SPECIALS GRID ────────────────────────────────────────── */
+function renderSpecials(){
+  const grid = document.getElementById("specialsGrid");
+  grid.innerHTML = SPECIALS.map(item => {
+    const key = skey(item), qty = cart[key]?.qty || 0;
+    return `<div class="special-card" data-key="${key}">
+      ${thumbHTML(item,key)}
+      <span class="sp-tag">Today's Special</span>
+      ${bodyHTML(item,key,qty)}
+    </div>`;
+  }).join("");
+  wireButtons(grid, "special");
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,"-"); }
+
+function renderNav(){
+  const nav = document.getElementById("catNav");
+  nav.innerHTML = MENU.map((c,i)=>
+    `<button data-t="${slug(c.cat)}" class="${i===0?"active":""}">${c.cat}</button>`
+  ).join("");
+  nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+    document.getElementById(slug(b.dataset.t))?.scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  // active highlight on scroll
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        nav.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b.dataset.t===e.target.id));
+      }
+    });
+  },{rootMargin:"-60px 0px -60% 0px"});
+  document.querySelectorAll(".cat-section").forEach(s=>observer.observe(s));
+}
+
+/* ── MENU ─────────────────────────────────────────────────── */
+function renderMenu(){
+  document.getElementById("menuMain").innerHTML = MENU.map(cat=>`
+    <section class="cat-section" id="${slug(cat.cat)}">
+      <div class="cat-header">
+        <div class="cat-title">${cat.cat}<span class="cat-count">${cat.items.length} items</span></div>
+        ${cat.subtitle ? `<div class="cat-sub">${cat.subtitle}</div>` : ""}
+        <div class="cat-rule"></div>
+      </div>
+      <div class="menu-grid">${cat.items.map(it=>cardHTML(it)).join("")}</div>
+    </section>`
+  ).join("");
+  wireButtons(document.getElementById("menuMain"), "menu");
+}
+
+/* ── CARD HTML ────────────────────────────────────────────── */
+function cardHTML(item){
+  const key = ikey(item), qty = cart[key]?.qty || 0;
+  return `<div class="item-card" data-key="${key}">
+    ${thumbHTML(item,key)}
+    ${bodyHTML(item,key,qty)}
+  </div>`;
+}
+
+function thumbHTML(item, key){
+  const numBadge = `<div class="item-num">#${item.num}</div>`;
+  if(item.img){
+    // URL-encode spaces in filenames (e.g. "53 fried_chicken..." → "53%20fried_chicken...")
+    const safeSrc = item.img.replace(/ /g, '%20');
+    return `<div class="item-thumb">${numBadge}
+      <img src="${safeSrc}" alt="${item.name}" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="no-img" style="display:none"><span>🍽</span>${item.name}</div>
+    </div>`;
+  }
+  return `<div class="item-thumb">${numBadge}
+    <div class="no-img"><span>🍽</span>${item.name}</div>
+  </div>`;
+}
+
+function priceHTML(item){
+  if(item.price === null) return `<div class="item-price">Ask for price</div>`;
+  if(item.priceReg){
+    return `<div class="item-price">
+      $${item.price.toFixed(2)} / $${item.priceReg.toFixed(2)}
+      <span class="size-mini">Mini / Regular</span>
+    </div>`;
+  }
+  return `<div class="item-price">$${item.price.toFixed(2)}</div>`;
+}
+
+function stepperHTML(key,qty){
+  return `<div class="qty-stepper" data-key="${key}">
+    <button class="dec">−</button>
+    <span class="qv">${qty}</span>
+    <button class="inc">+</button>
+  </div>`;
+}
+
+function bodyHTML(item, key, qty){
+  return `<div class="item-body">
+    <div class="item-name">${item.name}</div>
+    <div class="item-desc">${item.desc}</div>
+    <div class="item-foot" id="foot-${key}">
+      ${priceHTML(item)}
+      ${item.price !== null
+        ? (qty > 0 ? stepperHTML(key,qty) : `<button class="add-btn" data-key="${key}">Add +</button>`)
+        : `<button class="add-btn" disabled style="opacity:.4;cursor:not-allowed">N/A</button>`}
+    </div>
+  </div>`;
+}
+
+/* ── WIRE BUTTONS ─────────────────────────────────────────── */
+function wireButtons(root){
+  root.querySelectorAll(".add-btn:not([disabled])").forEach(btn=>{
+    btn.addEventListener("click",()=>{ doAdd(btn.dataset.key); });
+  });
+  root.querySelectorAll(".qty-stepper").forEach(st=>{
+    const key = st.dataset.key;
+    st.querySelector(".inc").addEventListener("click",()=>doAdd(key));
+    st.querySelector(".dec").addEventListener("click",()=>doRemove(key));
+  });
+}
+
+function doAdd(key){
+  const item = findByKey(key);
+  if(!item || item.price === null) return;
+  if(!cart[key]) cart[key] = {item, key, qty:0};
+  cart[key].qty++;
+  refreshCard(key); updateCartUI();
+}
+function doRemove(key){
+  if(!cart[key]) return;
+  cart[key].qty--;
+  if(cart[key].qty <= 0) delete cart[key];
+  refreshCard(key); updateCartUI();
+}
+function doRemoveAll(key){ delete cart[key]; refreshCard(key); updateCartUI(); }
+
+function refreshCard(key){
+  const foot = document.getElementById("foot-" + key);
+  if(!foot) return;
+  const item = findByKey(key);
+  if(!item) return;
+  const qty = cart[key]?.qty || 0;
+  foot.innerHTML = priceHTML(item) +
+    (item.price !== null
+      ? (qty > 0 ? stepperHTML(key,qty) : `<button class="add-btn" data-key="${key}">Add +</button>`)
+      : `<button class="add-btn" disabled style="opacity:.4;cursor:not-allowed">N/A</button>`);
+  if(qty > 0){
+    const st = foot.querySelector(".qty-stepper");
+    st.querySelector(".inc").addEventListener("click",()=>doAdd(key));
+    st.querySelector(".dec").addEventListener("click",()=>doRemove(key));
+  } else {
+    foot.querySelector(".add-btn")?.addEventListener("click",()=>doAdd(key));
+  }
+}
+
+/* ── CART TOTALS ─────────────────────────────────────────── */
+function cartCount(){ return Object.values(cart).reduce((s,c)=>s+c.qty,0); }
+function cartSubtotal(){ return Object.values(cart).reduce((s,c)=>s+c.qty*c.item.price,0); }
+
+function updateCartUI(){
+  const count = cartCount(), sub = cartSubtotal();
+  document.getElementById("cartBadge").textContent = count;
+  document.getElementById("cartBarTotal").textContent = "$"+sub.toFixed(2);
+  document.getElementById("cartBar").classList.toggle("on", count > 0);
+  renderCartBody();
+}
+
+function renderCartBody(){
+  const body = document.getElementById("cartBody");
+  const entries = Object.entries(cart);
+  if(!entries.length){
+    body.innerHTML = `<div class="empty-cart"><div class="ei">🥡</div>Your order is empty.<br>Add something from the menu!</div>`;
+    return;
+  }
+  const sub = cartSubtotal(), tax = sub*TAX, total = sub+tax;
+  body.innerHTML = entries.map(([key,c])=>`
+    <div class="cart-line">
+      <div class="cl-img">${c.item.img ? `<img src="${c.item.img}" alt="${c.item.name}">` : ""}</div>
+      <div class="cl-info">
+        <div class="cl-top">
+          <div class="cl-name">${c.item.name}</div>
+          <div class="cl-price">$${(c.item.price*c.qty).toFixed(2)}</div>
+        </div>
+        <div class="cl-bot">
+          <div class="qty-stepper" data-key="${key}">
+            <button class="dec">−</button><span class="qv">${c.qty}</span><button class="inc">+</button>
+          </div>
+          <button class="rm-btn" data-key="${key}">Remove</button>
+        </div>
+      </div>
+    </div>`).join("") +
+  `<div class="cart-summary">
+    <div class="sum-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+    <div class="sum-row"><span>Tax (4.712%)</span><span>$${tax.toFixed(2)}</span></div>
+    <div class="sum-row total"><span>Total</span><span>$${total.toFixed(2)}</span></div>
+  </div>
+  <button class="checkout-btn" id="goCheckout" ${!storeOpen()?"disabled style='opacity:.45;cursor:not-allowed;background:#999'":""}>
+    ${storeOpen() ? "Proceed to checkout" : "Store is closed — cannot checkout"}
+  </button>`;
+
+  body.querySelectorAll(".qty-stepper").forEach(st=>{
+    const key = st.dataset.key;
+    st.querySelector(".inc").addEventListener("click",()=>doAdd(key));
+    st.querySelector(".dec").addEventListener("click",()=>doRemove(key));
+  });
+  body.querySelectorAll(".rm-btn").forEach(b=>b.addEventListener("click",()=>doRemoveAll(b.dataset.key)));
+  document.getElementById("goCheckout").addEventListener("click",openCheckout);
+}
+
+/* ── MODALS ─────────────────────────────────────────────── */
+const cartOv = document.getElementById("cartOverlay");
+const coOv   = document.getElementById("checkoutOverlay");
+
+document.getElementById("openCartBtn").addEventListener("click",()=>cartOv.classList.add("open"));
+document.getElementById("closeCartBtn").addEventListener("click",()=>cartOv.classList.remove("open"));
+cartOv.addEventListener("click",e=>{ if(e.target===cartOv) cartOv.classList.remove("open"); });
+document.getElementById("closeCheckoutBtn").addEventListener("click",()=>coOv.classList.remove("open"));
+coOv.addEventListener("click",e=>{ if(e.target===coOv) coOv.classList.remove("open"); });
+
+/* checkout state managed inside openCheckout/renderCheckoutForm */
+
+function openCheckout(){
+  if(!storeOpen()){
+    alert("Sorry, we're closed right now. Online ordering is available Mon–Fri 7:00a–7:00p and Sat 8:00a–5:00p.");
+    return;
+  }
+  cartOv.classList.remove("open");
+  coOv.classList.add("open");
+  document.getElementById("checkoutTitle").textContent = "Checkout";
+  renderCheckoutForm();
+}
+
+/* ── Load Stripe.js once, lazily ────────────────────────────── */
+let stripePromise = null;
+function loadStripe(){
+  if(stripePromise) return stripePromise;
+  stripePromise = new Promise((resolve, reject) => {
+    if(window.Stripe){ resolve(window.Stripe); return; }
+    const s = document.createElement("script");
+    s.src = "https://js.stripe.com/v3/";
+    s.onload  = () => resolve(window.Stripe);
+    s.onerror = () => reject(new Error("Could not load Stripe.js"));
+    document.head.appendChild(s);
+  });
+  return stripePromise;
+}
+
+/* ── Stripe publishable key ─────────────────────────────────────
+   Replace with your real key from https://dashboard.stripe.com/apikeys
+   Test keys start with pk_test_
+   Live keys start with pk_live_
+   ─────────────────────────────────────────────────────────────── */
+const STRIPE_PK = "pk_test_REPLACE_WITH_YOUR_STRIPE_PUBLISHABLE_KEY";
+
+/* ── Backend URL ────────────────────────────────────────────────
+   While testing locally: http://localhost:3001
+   When deployed to a server: change to your real domain
+   ─────────────────────────────────────────────────────────────── */
+const API = "http://localhost:3001";
+
+let stripeInstance = null;
+let cardElement    = null;
+let cxState = { time: "asap" };
+
+async function renderCheckoutForm(){
+  const sub   = cartSubtotal();
+  const tax   = sub * TAX;
+  const total = sub + tax;
+
+  document.getElementById("checkoutBody").innerHTML = `
+    <div class="sec-label"><span class="sn">1</span>Your Info</div>
+    <div class="field"><label>Name *</label><input id="cName" placeholder="Full name" autocomplete="name"></div>
+    <div class="frow">
+      <div class="field"><label>Phone *</label><input id="cPhone" type="tel" placeholder="(808) 555-0000" autocomplete="tel"></div>
+      <div class="field"><label>Email</label><input id="cEmail" type="email" placeholder="you@email.com" autocomplete="email"></div>
+    </div>
+
+    <div class="sec-label"><span class="sn">2</span>Pickup Time</div>
+    <div class="radio-group" id="timeGroup">
+      <div class="radio-pill sel" data-v="asap">ASAP (~20 min)</div>
+      <div class="radio-pill" data-v="later">Schedule a time</div>
+    </div>
+    <div class="field" id="timeField" style="display:none;margin-top:9px">
+      <label>Pickup time</label><input id="pickupTime" type="time">
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label>Order notes (optional)</label>
+      <textarea id="cNotes" rows="2" placeholder="Allergies, spice level, special requests…"></textarea>
+    </div>
+
+    <div class="sec-label"><span class="sn">3</span>Payment</div>
+    <div class="field">
+      <label>Card details</label>
+      <div id="stripe-card-element" style="border:2px solid var(--ink);padding:11px 12px;background:#fff;"></div>
+      <div id="stripe-card-error" style="color:var(--red);font-size:.78rem;margin-top:5px;"></div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="sum-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+      <div class="sum-row"><span>Tax (4.712%)</span><span>$${tax.toFixed(2)}</span></div>
+      <div class="sum-row total"><span>Total</span><span>$${total.toFixed(2)}</span></div>
+    </div>
+
+    <button class="checkout-btn" id="placeOrderBtn">
+      Pay $${total.toFixed(2)} &amp; Send Order
+    </button>
+    <div id="payStatus" style="text-align:center;margin-top:10px;font-size:.8rem;color:rgba(43,36,32,.6);"></div>`;
+
+  /* pickup time toggle */
+  document.getElementById("timeGroup").querySelectorAll(".radio-pill").forEach(p => {
+    p.addEventListener("click", () => {
+      document.getElementById("timeGroup").querySelectorAll(".radio-pill").forEach(x => x.classList.remove("sel"));
+      p.classList.add("sel");
+      cxState.time = p.dataset.v;
+      document.getElementById("timeField").style.display = p.dataset.v === "later" ? "block" : "none";
+    });
+  });
+
+  /* Mount Stripe Card Element */
+  try {
+    const StripeJs = await loadStripe();
+    stripeInstance = StripeJs(STRIPE_PK);
+    const elements = stripeInstance.elements();
+    cardElement = elements.create("card", {
+      style:{
+        base:{ fontFamily:"'Archivo', sans-serif", fontSize:"15px", color:"#2B2420",
+               "::placeholder":{color:"rgba(43,36,32,.4)"} },
+        invalid:{ color:"#C8372E" }
+      },
+      hidePostalCode: false,
+    });
+    cardElement.mount("#stripe-card-element");
+    cardElement.on("change", e => {
+      document.getElementById("stripe-card-error").textContent = e.error ? e.error.message : "";
+    });
+  } catch(e) {
+    document.getElementById("stripe-card-element").innerHTML =
+      `<span style="color:var(--red);font-size:.8rem;">⚠ Could not load payment form. Make sure the server is running and your Stripe key is set.</span>`;
+  }
+
+  document.getElementById("placeOrderBtn").addEventListener("click", placeOrder);
+}
+
+async function placeOrder(){
+  if(!storeOpen()){
+    alert("Sorry, we're currently closed. Please come back during business hours.");
+    return;
+  }
+
+  const name  = document.getElementById("cName").value.trim();
+  const phone = document.getElementById("cPhone").value.trim();
+  const email = document.getElementById("cEmail").value.trim();
+  const notes = document.getElementById("cNotes").value.trim();
+
+  if(!name || !phone){
+    alert("Please enter your name and phone number so we can contact you about your pickup.");
+    return;
+  }
+
+  const sub   = cartSubtotal();
+  const tax   = +(sub * TAX).toFixed(2);
+  const total = +(sub + tax).toFixed(2);
+  const amountCents = Math.round(total * 100);
+
+  const btn    = document.getElementById("placeOrderBtn");
+  const status = document.getElementById("payStatus");
+  btn.disabled = true;
+  btn.textContent = "Processing…";
+  status.textContent = "Contacting payment server…";
+
+  try {
+    /* ── Step 1: Create PaymentIntent on server ─────────────── */
+    const piRes = await fetch(`${API}/create-payment-intent`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount:        amountCents,
+        customerName:  name,
+        customerPhone: phone,
+        customerEmail: email,
+      }),
+    });
+
+    if(!piRes.ok){
+      const e = await piRes.json();
+      throw new Error(e.error || "Server error creating payment.");
+    }
+
+    const { clientSecret } = await piRes.json();
+    status.textContent = "Confirming card…";
+
+    /* ── Step 2: Confirm card payment in browser ─────────────── */
+    const { paymentIntent, error } = await stripeInstance.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: cardElement,
+        billing_details: { name, email, phone },
+      },
+    });
+
+    if(error){
+      throw new Error(error.message);
+    }
+
+    if(paymentIntent.status !== "succeeded"){
+      throw new Error("Payment not completed. Status: " + paymentIntent.status);
+    }
+
+    status.textContent = "Payment confirmed! Sending order to kitchen…";
+
+    /* ── Step 3: Confirm order + trigger SMS ─────────────────── */
+    const orderNum    = "TL-" + Math.floor(1000 + Math.random() * 9000);
+    const pickupLabel = cxState.time === "asap"
+      ? "ASAP (~20 minutes)"
+      : (document.getElementById("pickupTime")?.value || "Scheduled");
+
+    const orderItems = Object.values(cart).map(c => ({
+      name:  c.item.name,
+      qty:   c.qty,
+      price: c.item.price,
+    }));
+
+    const confirmRes = await fetch(`${API}/confirm-order`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        orderNum,
+        customerName:  name,
+        customerPhone: phone,
+        customerEmail: email,
+        pickupTime:    pickupLabel,
+        notes,
+        items:         orderItems,
+        subtotal:      sub.toFixed(2),
+        tax:           tax.toFixed(2),
+        total:         total.toFixed(2),
+        paymentIntentId: paymentIntent.id,
+      }),
+    });
+
+    const confirmData = await confirmRes.json();
+
+    /* ── Step 4: Show confirmation screen ────────────────────── */
+    const smsSentTo = confirmData.smsSent === 2 ? "cook & manager"
+                    : confirmData.smsSent === 1 ? "one recipient"
+                    : "kitchen (SMS error — check Twilio)";
+
+    document.getElementById("checkoutTitle").textContent = "Order Confirmed! 🌺";
+    document.getElementById("checkoutBody").innerHTML = `
+      <div class="confirm-wrap">
+        <div class="confirm-check">✓</div>
+        <h2>Thank you, ${name.split(" ")[0]}!</h2>
+        <p class="confirm-detail">Your payment went through and the kitchen has been notified.</p>
+        <div class="order-num">#${orderNum}</div>
+        <p class="confirm-detail">
+          <strong>Pickup:</strong> ${pickupLabel}<br>
+          <strong>Address:</strong> 1335 Middle St, Honolulu HI 96819<br>
+          <strong>Phone:</strong> <a href="tel:+18084621969">(808) 462-1969</a><br>
+          <br>
+          SMS receipt sent to ${smsSentTo}.<br>
+          Takeout window only — no dining room.
+        </p>
+        ${notes ? `<p class="confirm-detail" style="margin-top:8px;padding:8px;background:var(--cream-dim);font-style:italic;">"${notes}"</p>` : ""}
+        <button class="new-order-btn" onclick="document.getElementById('checkoutOverlay').classList.remove('open')">Close</button>
+      </div>`;
+
+    /* Clear cart */
+    cart = {};
+    renderMenu();
+    renderSpecials();
+    updateCartUI();
+
+  } catch(err) {
+    console.error("Order error:", err);
+    status.textContent = "";
+    btn.disabled = false;
+    btn.textContent = `Pay $${total.toFixed(2)} & Send Order`;
+    document.getElementById("stripe-card-error").textContent = "⚠ " + err.message;
+  }
+}
+
+/* ── INIT ───────────────────────────────────────────────── */
+renderSpecialsDate();
+renderSpecials();
+renderNav();
+renderMenu();
+updateCartUI();
+renderStatus(); /* called LAST so it can lock Add buttons after they're rendered */
+
+/* Re-check every minute in case store opens/closes while page is open */
+setInterval(renderStatus, 60000);
+</script>
+</body>
+</html>
