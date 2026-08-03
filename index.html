@@ -387,7 +387,7 @@ footer{text-align:center;padding:28px 16px 50px;font-size:.76rem;color:rgba(43,3
 <div class="storefront-wrap">
   <div class="storefront-photo" id="storefrontPhoto">
     <!-- Replace the div below with: <img src="your-photo.jpg" alt="T&L Market storefront"> -->
-      <img src="images/storefront.jpg" alt="T&L Market storefront">
+      <img src="images/Storefront1.jpg" alt="T&L Market storefront">
   </div>
 </div>
 
@@ -455,7 +455,7 @@ const MENU = [
   { cat:"All-Day Breakfast", items:[
     {num:"B1", name:"Breakfast Special",    desc:"Choice of 2 meats, rice, 2 eggs any style. Meats: Portuguese sausage, Spam, bacon, Vienna sausage.", price:11.00, img:"images/1breakfastspecial.png"},
     {num:"B2", name:"Breakfast Combo",      desc:"Choice of 3 meats, rice, 2 eggs any style.", price:12.00, img:"images/2breakfastcombo.png"},
-    {num:"B3", name:"Breakfast Bowl",       desc:"Rice, 1 egg, one choice of meat.", price:7.00,  img:"images/3breakfastbowl.png"},
+    {num:"B3", name:"Breakfast Bowl",       desc:"Rice, 1 egg, one choice of meat.", price:7.50,  img:"images/3breakfastbowl.png"},
     {num:"B4", name:"T&L Bigboy Breakfast", desc:"Fried omelet, fried rice, Portuguese sausage.", price:13.50, img:"images/4tlbigboy.png"},
   ]},
 
@@ -502,31 +502,32 @@ const MENU = [
 
   /* ── BURGERS & FRIES ────────────────────────────────────── */
   { cat:"Burgers & Fries", items:[
-    {num:"BG0", name:"French Fries",          desc:"Crispy golden fries.", price:3.00, img:"images/45.png"},
+    {num:"BG0", name:"French Fries",          desc:"Crispy golden fries.", price:4.00, img:"images/45.png"},
     {num:"BG1", name:"Teri Burger",           desc:"Burger glazed in house teriyaki sauce.", price:5.00, img:"images/terriburger.png"},
     {num:"BG2", name:"Cheese Burger",         desc:"Classic burger with cheese, lettuce, tomato.", price:7.00, img:"images/47_cheese_burger .png"},
     {num:"BG3", name:"Teri Burger w/ Cheese", desc:"Teriyaki burger with melted cheese.", price:8.00, img:"images/48_teri_burg_cheese.png"},
-    {num:"BG4", name:"Fish Burger",           desc:"Fried fish fillet burger with tartar sauce.", price:null, img:"images/50_fish_burger.png"},
-    {num:"BG5", name:"Spicy Chicken Burger",  desc:"Crispy chicken burger with spicy mayo.", price:6.00, img:"images/51_spicy_chicken_burger.png"},
-    {num:"BG6", name:"BBQ Beef Burger",       desc:"Burger topped with house BBQ sauce.", price:null, img:"images/52_bbq_beef_burger.png"},
+    {num:"BG4", name:"Fish Burger",           desc:"Fried fish fillet burger with tartar sauce.", price:8.00, img:"images/50_fish_burger.png"},
+    {num:"BG5", name:"Spicy Chicken Burger",  desc:"Crispy chicken burger with spicy mayo.", price:8.00, img:"images/51_spicy_chicken_burger.png"},
+    {num:"BG6", name:"BBQ Beef Burger",       desc:"Burger topped with house BBQ sauce.", price:9.00, img:"images/52_bbq_beef_burger.png"},
+    {num:"BG7", name:"Hamburger Burger",      desc:"Burger topped with house BBQ sauce.", price:7.00, img:"images/52_bbq_beef_burger.png"},
   ]},
 
   /* ── DAILY ITEMS ────────────────────────────────────────── */
   { cat:"Daily Items", items:[
-    {num:"D1",  name:"Noodle (Small)",         desc:"Local-style noodle soup, small.", price:3.00, img:"images/noodle_sm.png"},
-    {num:"D2",  name:"Noodle (Medium)",        desc:"Local-style noodle soup, medium.", price:6.00, img:"images/noodle_md.png"},
-    {num:"D3",  name:"Noodle (Large)",         desc:"Local-style noodle soup, large.", price:8.00, img:"images/noodle_lg.png"},
+    {num:"D1",  name:"Noodle (Small)",         desc:"Local-style noodle soup, small.", price:4.50, img:"images/noodle_sm.png"},
+    {num:"D2",  name:"Noodle (Medium)",        desc:"Local-style noodle soup, medium.", price:7.50, img:"images/noodle_md.png"},
+    {num:"D3",  name:"Noodle (Large)",         desc:"Local-style noodle soup, large.", price:9.50, img:"images/noodle_lg.png"},
     {num:"D4",  name:"Fried Rice",             desc:"House fried rice.", price:8.00, img:"images/fried_rice.png"},
-    {num:"D5",  name:"Lumpia",                 desc:"Filipino-style fried spring roll, per piece.", price:0.95, img:"images/lumpia.png"},
+    {num:"D5",  name:"Lumpia",                 desc:"Filipino-style fried spring roll, per piece.", price:1.00, img:"images/lumpia.png"},
     {num:"D6",  name:"Pork Hash",              desc:"Steamed pork dumpling, per piece.", price:0.75, img:"images/pork_hash.png"},
     {num:"D7",  name:"Manapua (Char Siu Pork)",desc:"Steamed bun filled with Chinese BBQ pork.", price:3.00, img:"images/manapua.png"},
     {num:"D8",  name:"Won Ton",                desc:"Fried wonton, per piece.", price:0.75, img:"images/wonton.png"},
     {num:"D9",  name:"Fried Pork Hash",        desc:"Crispy fried pork hash, per piece.", price:0.75, img:"images/fried_pork_hash.png"},
     {num:"D10", name:"Burrito",                desc:"House-made burrito.", price:3.00, img:"images/burrito.png"},
     {num:"D11", name:"Fried Chicken (Daily)",  desc:"Crispy fried chicken, single piece.", price:3.00, img:"images/fried_chicken_daily.png"},
-    {num:"D12", name:"Bento",                  desc:"Japanese-style bento box.", price:8.00, img:"images/bento.png"},
-    {num:"D13", name:"Spam Musubi",            desc:"Grilled Spam over rice, wrapped in nori.", price:2.50, img:"images/musubi.png"},
-    {num:"D14", name:"Rice (Side Order)",      desc:"Scoop of steamed rice.", price:2.00, img:"images/rice_side.png"},
+    {num:"D12", name:"Bento",                  desc:"Japanese-style bento box.", price:9.50, img:"images/bento.png"},
+    {num:"D13", name:"Spam Musubi",            desc:"Grilled Spam over rice, wrapped in nori.", price:2.75, img:"images/musubi.png"},
+    {num:"D14", name:"Rice (Side Order)",      desc:"Scoop of steamed rice.", price:2.50, img:"images/rice_side.png"},
     {num:"D15", name:"Mac Salad (Side Order)", desc:"Scoop of macaroni salad.", price:2.00, img:"images/mac_salad_side.png"},
   ]},
 
@@ -577,9 +578,9 @@ const MENU = [
     /* remaining items */
     {num:"16", name:"Kalua Pork & Pork Laulau",  desc:"Smoky kalua pork with traditional pork laulau.", price:19.00, img:"images/6-9kaluaporkporklaulau.png"},
     {num:"17", name:"Fried Pork Chops",          desc:"Crispy fried pork chops, rice, mac salad.", price:16.00, img:"images/7-1friedpor chops.png"},
-    {num:"18", name:"Grill Pork Chops w/ Gravy", desc:"Grilled pork chops smothered in gravy, rice.", price:16.00, img:"images/72grillporkchops.png"},
+    {num:"18", name:"Grill Pork Chops w/ Gravy", desc:"Grilled pork chops smothered in gravy, rice.", price:16.50, img:"images/72grillporkchops.png"},
     {num:"19", name:"Steak and Mushroom",        desc:"Grilled steak, sauteed mushroom, rice.", price:19.00, img:"images/73steakmushroom.png"},
-    {num:"20", name:"Beef Curry",                desc:"Japanese-style curry with beef, rice.", price:14.00, img:"images/74beefcurry.png"},
+    {num:"20", name:"Beef Curry",                desc:"Japanese-style curry with beef, rice.", price:14.50, img:"images/74beefcurry.png"},
     {num:"21", name:"T&L Saimin",               desc:"Local-style noodle soup, char siu, egg, green onion.", price:9.50, img:"images/75tlsaimin.png"},
     {num:"22", name:"Garlic Wing",              desc:"Fried wings tossed in garlic sauce.", price:15.00, img:"images/76garlicwing.png"},
     {num:"23", name:"Boneless Chicken w/ Rice", desc:"Crispy boneless chicken bites, rice, mac salad.", price:14.00, img:"images/77bonelesschicken.png"},
